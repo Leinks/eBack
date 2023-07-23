@@ -25,6 +25,22 @@ async def add_admin(new_admin: Admin) -> Admin:
     admin = await new_admin.create()
     return admin
 
+async def update_admin_data(id: PydanticObjectId, data: dict) -> Union[bool, Admin]:
+    des_body = {k: v for k, v in data.items() if v is not None}
+    update_query = {"$set": {field: value for field, value in des_body.items()}}
+    admin = await admin_collection.get(id)
+    if admin:
+        await admin.update(update_query)
+        return admin
+    return False
+
+# async def update_admin_password(id: PydanticObjectId) -> Admin:
+#     admin = await admin_collection.get(id)
+#     if admin:
+#         return admin
+
+
+
 ############################### User Schema #############################
 
 async def retrieve_users() -> List[User]:

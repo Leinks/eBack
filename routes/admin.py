@@ -34,3 +34,52 @@ async def admin_signup(admin: Admin = Body(...)):
     admin.password = hash_helper.encrypt(admin.password)
     new_admin = await add_admin(admin)
     return new_admin
+
+# @router.put("/{id}", response_model=Response)
+# async def change_admin_password(id: PydanticObjectId, req: UpdateUserPassword = Body(...)):
+#     # change_admin_password = await update_admin_data(id, req.dict())
+#     print(change_admin_password)
+#     # updated_admin = await update_admin_password(id)
+    
+#     # async def get_user_data(id: PydanticObjectId):
+#     # user = await retrieve_user(id)
+    
+    
+#     if change_admin_password:
+#         return {
+#             "status_code": 200,
+#             "response_type": "success",
+#             "description": "Users with ID: {} updated".format(id),
+#             "data": change_admin_password,
+#         }
+#     return {
+#         "status_code": 404,
+#         "response_type": "error",
+#         "description": "An error occurred. Users with ID: {} not found".format(id),
+#         "data": False,
+#     }
+
+
+# @router.put("/{id}", response_model=Response)
+# async def update_admin(id: PydanticObjectId, req: UpdateUserPassword = Body(...)):
+#     updated_admin = await update_admin_data(id, req.dict())
+#     if updated_admin:
+#         return {
+#             "status_code": 200,
+#             "response_type": "success",
+#             "description": "Users with ID: {} updated".format(id),
+#             "data": updated_admin,
+#         }
+#     return {
+#         "status_code": 404,
+#         "response_type": "error",
+#         "description": "An error occurred. Users with ID: {} not found".format(id),
+#         "data": False,
+#     }
+
+# @router.post("/refresh")
+# async def admin_refresh(Authorize: RefreshToken = Body(...)):
+#         current_user = Authorize.get_jwt_subject()
+#         new_access_token = Authorize.create_access_token(subject=current_user)
+#         # return refresh_jwt(current_user,new_access_token)
+#  

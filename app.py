@@ -40,10 +40,10 @@ async def start_database():
 
 @app.get("/", tags=["Root"])
 async def read_root():
-    return {"message": "Welcome to this fantastic app."}
+    return {"message": "Welcome to this fantastic Api."}
 
 
-app.include_router(AdminRouter, tags=["Administrator"], prefix="/admin")
+app.include_router(AdminRouter, tags=["Administrator"], prefix="/auth")
 app.include_router(UserRouter, tags=["Users"], prefix="/user", dependencies=[Depends(token_listener)],)
 app.include_router(RoleRouter, tags=["Roles"], prefix="/role", dependencies=[Depends(token_listener)],)
 app.include_router(PermissionRouter, tags=["Permissions"], prefix="/permission", dependencies=[Depends(token_listener)],)
