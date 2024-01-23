@@ -15,7 +15,7 @@ class Admin(Document):
     class Config:
         schema_extra = {
             "example": {
-                "name": "Engelbert Tovar",
+                "username": "Engelbert Tovar",
                 "email": "admin@mail.dev",
                 "password": "secreto",
                 "photo": "https://images.pexels.com/photos/4804267/pexels-photo-4804267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
