@@ -7,7 +7,7 @@ from config.config import Settings
 
 
 def token_response(token: str, email: str, name: str):
-    return {"access_token": token, "email": email, "name": name}
+    return {"accessToken": token, "email": email, "name": name}
 
 
 secret_key = Settings().secret_key
