@@ -10,8 +10,8 @@ class Company(Document):
     email: EmailStr
     logo: Optional[str] = None
     description:str
-    created_at: datetime
-    updated_at: Optional[datetime] = None
+    created_at: Optional[datetime] = datetime.now()
+    updated_at: Optional[datetime] = datetime.now()
 
     class Config:
         schema_extra = {
@@ -22,8 +22,6 @@ class Company(Document):
                 "email": "meta@mail.com",
                 "logo": "https//logo.com",
                 "description": "Empresa dedicada a la Técnologia",
-                "created_at": datetime.now(),
-                "updated_at": datetime.now(),
             }
         }
 
@@ -38,7 +36,7 @@ class UpdateCompanyModel(BaseModel):
     email: Optional[EmailStr]
     logo: Optional[str] = None
     description:Optional[str]
-    updated_at: Optional[datetime]
+    updated_at: Optional[datetime] = datetime.now()
 
     class Collection:
         name = "companys"
@@ -52,7 +50,6 @@ class UpdateCompanyModel(BaseModel):
                 "email": "meta@mail.com",
                 "logo": "https//logo.com",
                 "description": "Empresa dedicada a la Técnologia",
-                "updated_at": datetime.now(),
             }
         }
 
@@ -69,6 +66,6 @@ class Response(BaseModel):
                 "status_code": 200,
                 "response_type": "success",
                 "description": "Operation successful",
-                "data": "Sample data",
+                "data": "Company success !",
             }
         }

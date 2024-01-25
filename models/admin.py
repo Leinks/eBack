@@ -5,22 +5,20 @@ from fastapi.security import HTTPBasicCredentials
 from pydantic import BaseModel, EmailStr
 
 class Admin(Document):
-    name: Optional[str]
+    name: str
     email: EmailStr
     password: str
     photo: Optional[str] = None
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime] = None
+    created_at: Optional[datetime] = datetime.now()
+    updated_at: Optional[datetime] = datetime.now()
 
     class Config:
         schema_extra = {
             "example": {
-                "username": "Engelbert Tovar",
+                "name": "Engelbert Tovar",
                 "email": "admin@mail.dev",
                 "password": "secreto",
                 "photo": "https://images.pexels.com/photos/4804267/pexels-photo-4804267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                "created_at": datetime.now(),
-                "updated_at": datetime.now(),
             }
         }
 
@@ -36,14 +34,14 @@ class AdminSignIn(HTTPBasicCredentials):
 
 
 class AdminData(BaseModel):
-    username: str
+    name: str
     email: EmailStr
     password: str
 
     class Config:
         schema_extra = {
             "example": {
-                "username": "Engelbert Tovar",
+                "name": "Engelbert Tovar",
                 "email": "admin@mail.dev",
             }
         }

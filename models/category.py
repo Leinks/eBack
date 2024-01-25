@@ -6,16 +6,14 @@ from pydantic import BaseModel
 class Category(Document):
     name: str
     photo: Optional[str] = None
-    created_at: datetime
-    updated_at: Optional[datetime] = None
+    created_at: Optional[datetime] = datetime.now()
+    updated_at: Optional[datetime] = datetime.now()
 
     class Config:
         schema_extra = {
             "example": {
                 "name": "Hamburguesas",
                 "photo": "https//photo.com",
-                "created_at": datetime.now(),
-                "updated_at": datetime.now(),
             }
         }
 
@@ -26,7 +24,7 @@ class Category(Document):
 class UpdateCategoryModel(BaseModel):
     name: str
     photo: Optional[str] = None
-    updated_at: Optional[datetime]
+    updated_at: Optional[datetime] = datetime.now()
 
     class Collection:
         name = "categories"
@@ -36,7 +34,6 @@ class UpdateCategoryModel(BaseModel):
             "example": {
                 "name": "Hamburguesas",
                 "photo": "https//photo.com",
-                "updated_at": datetime.now(),
             }
         }
 
@@ -53,6 +50,6 @@ class Response(BaseModel):
                 "status_code": 200,
                 "response_type": "success",
                 "description": "Operation successful",
-                "data": "Sample data",
+                "data": "Category Success !",
             }
         }
